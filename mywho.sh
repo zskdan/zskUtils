@@ -20,4 +20,4 @@
 
 set -o nounset                              # Treat unset variables as an error
 
-who | awk ' $1 !~ /'$USER'/ {print};  $5 !~ /\(\:.*\)$/ {print}'
+who | awk  '$5 !~ /\(\:.*\)$/ { if ($1 != /'$USER'/) { if ( $2 !~ /tty/ ) print } };'
